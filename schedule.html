@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bus Schedule - SmartBus</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <meta name="description" content="View SmartBus schedules, departure times, and arrival information">
+  <style>
+    .filter-bar {
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .filter-bar .form-group {
+      margin-bottom: 0;
+      min-width: 200px;
+    }
+    .schedule-table-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filter-bar .form-group {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <span class="brand-icon">&#128652;</span>
+      SmartBus
+    </a>
+    <button class="navbar-toggle" onclick="toggleNav()">&#9776;</button>
+    <ul class="navbar-nav" id="navbarNav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="routes.html">Routes</a></li>
+      <li><a href="schedule.html" class="active">Schedule</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html" class="btn btn-primary">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Schedule Section -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Bus Schedule</h2>
+      <p>View departure and arrival times for all routes</p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="form-group">
+        <label for="routeFilter">Route</label>
+        <select id="routeFilter" class="form-control" onchange="filterSchedule()">
+          <option value="all">All Routes</option>
+          <option value="101">101 - Downtown Express</option>
+          <option value="205">205 - University Line</option>
+          <option value="312">312 - Airport Shuttle</option>
+          <option value="118">118 - Harbor Loop</option>
+          <option value="407">407 - Suburban Connector</option>
+          <option value="550">550 - East-West Crosstown</option>
+          <option value="623">623 - Hillside Route</option>
+          <option value="780">780 - Night Owl Service</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dayFilter">Day</label>
+        <select id="dayFilter" class="form-control" onchange="filterSchedule()">
+          <option value="all">All Days</option>
+          <option value="weekday">Weekday</option>
+          <option value="saturday">Saturday</option>
+          <option value="sunday">Sunday</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-secondary" onclick="resetFilters()">Reset Filters</button>
+      </div>
+    </div>
+
+    <!-- Schedule Table -->
+    <div class="schedule-table-wrapper">
+      <div class="card">
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Route #</th>
+                <th>Route Name</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Day</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleBody">
+              <tr data-route="101" data-day="weekday">
+                <td><strong>101</strong></td>
+                <td>Downtown Express</td>
+                <td>Central Station</td>
+                <td>Financial District</td>
+                <td>06:00 AM</td>
+                <td>06:35 AM</td>
+                <td>Weekday</td>
+                <td><span class="badge badge-success">On Time</span></td>
+              </tr>
+              <tr data-route="101" data-day="weekday">
+                <td><strong>101</strong></td>
+                <td>Downtown Express</td>
+                <td>Central Station</td>
+                <td>Financial District</td>
+                <td>07:15 AM</td>
+                <td>07:55 AM</td>
+                <td>Weekday</td>
+                <td><span class="badge badge-success">On Time</span></td>
+              </tr>
+              <tr data-route="205" data-day="weekday">
+                <td><strong>205</strong></td>
+                <td>University Line</td>
+                <td>Westside Campus</td>
+                <td>Grand Terminal</td>
+                <td>07:00 AM</td>
+                <td>07:40 AM</td>
+                <td>Weekday</td>
+                <td><span class="badge badge-success">On Time</span></td>
+              </tr>
+              <tr data-route="312" data-day="weekday">
+                <td><strong>312</strong></td>
+                <td>Airport Shuttle</td>
+                <td>Grand Terminal</td>
+                <td>Metro Airport</td>
+                <td>05:30 AM</td>
+                <td>06:15 AM</td>
+                <td>Weekday</td>
+                <td><span class="badge badge-warning">Delayed</span></td>
+              </tr>
+              <tr data-route="118" data-day="weekday">
+                <td><strong>118</strong></td>
+                <td>Harbor Loop</td>
+                <td>Marina Bay</td>
+                <td>Port Industrial Zone</td>
+                <td>08:00 AM</td>
+                <td>08:45 AM</td>
+                <td>Weekday</td>
+                <td><span class="badge badge-success">On Time</span></td>
+              </tr>
+              <tr data-route="550" data-day="weekday">
+                <td><strong>550</strong></td>
+                <td>East-West Crosstown</td>
+                <td>Eastdale Square</td>
+                <td>Westfield Plaza</td>
+                <td>06:30 AM</td>
+                <td>07:20 AM</td>
+                <td>Weekday</td>
+                <td><span class="badge badge-success">On Time</span></td>
+              </tr>
+              <tr data-route="623" data-day="saturday">
+                <td><strong>623</strong></td>
+                <td>Hillside Route</td>
+                <td>Summit Heights</td>
+                <td>Valley Town Center</td>
+                <td>08:30 AM</td>
+                <td>09:15 AM</td>
+                <td>Saturday</td>
+                <td><span class="badge badge-success">On Time</span></td>
+              </tr>
+              <tr data-route="407" data-day="saturday">
+                <td><strong>407</strong></td>
+                <td>Suburban Connector</td>
+                <td>Compass Mall</td>
+                <td>Riverside Park</td>
+                <td>09:00 AM</td>
+                <td>09:50 AM</td>
+                <td>Saturday</td>
+                <td><span class="badge badge-warning">Delayed</span></td>
+              </tr>
+              <tr data-route="101" data-day="saturday">
+                <td><strong>101</strong></td>
+                <td>Downtown Express</td>
+                <td>Central Station</td>
+                <td>Financial District</td>
+                <td>09:00 AM</td>
+                <td>09:40 AM</td>
+                <td>Saturday</td>
+                <td><span class="badge badge-success">On Time</span></td>
+              </tr>
+              <tr data-route="312" data-day="saturday">
+                <td><strong>312</strong></td>
+                <td>Airport Shuttle</td>
+                <td>Grand Terminal</td>
+                <td>Metro Airport</td>
+                <td>07:00 AM</td>
+                <td>07:45 AM</td>
+                <td>Saturday</td>
+                <td><span class="badge badge-success">On Time</span></td>
+              </tr>
+              <tr data-route="780" data-day="weekday">
+                <td><strong>780</strong></td>
+                <td>Night Owl Service</td>
+                <td>Central Station</td>
+                <td>South Bay Terminal</td>
+                <td>11:00 PM</td>
+                <td>11:55 PM</td>
+                <td>Weekday</td>
+                <td><span class="badge badge-success">On Time</span></td>
+              </tr>
+              <tr data-route="205" data-day="sunday">
+                <td><strong>205</strong></td>
+                <td>University Line</td>
+                <td>Westside Campus</td>
+                <td>Grand Terminal</td>
+                <td>09:00 AM</td>
+                <td>09:45 AM</td>
+                <td>Sunday</td>
+                <td><span class="badge badge-success">On Time</span></td>
+              </tr>
+              <tr data-route="550" data-day="sunday">
+                <td><strong>550</strong></td>
+                <td>East-West Crosstown</td>
+                <td>Eastdale Square</td>
+                <td>Westfield Plaza</td>
+                <td>10:00 AM</td>
+                <td>10:50 AM</td>
+                <td>Sunday</td>
+                <td><span class="badge badge-warning">Delayed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p id="noResults" style="display: none; text-align: center; padding: 2rem; color: var(--text-secondary);">No schedule entries match the selected filters.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>&#128652; SmartBus</h4>
+        <p>Smart Transportation & Ticketing Integration platform. Making public transport accessible, efficient, and enjoyable for everyone.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="routes.html">Routes</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="fares.html">Fares</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <ul>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="user/dashboard.html">My Dashboard</a></li>
+          <li><a href="user/my-tickets.html">My Tickets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Help Center</a></li>
+          <li><a href="contact.html">FAQ</a></li>
+          <li><a href="contact.html">Report Issue</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 SmartBus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    function filterSchedule() {
+      var route = document.getElementById('routeFilter').value;
+      var day = document.getElementById('dayFilter').value;
+      var rows = document.querySelectorAll('#scheduleBody tr');
+      var visibleCount = 0;
+
+      rows.forEach(function(row) {
+        var rowRoute = row.getAttribute('data-route');
+        var rowDay = row.getAttribute('data-day');
+        var showRoute = (route === 'all' || rowRoute === route);
+        var showDay = (day === 'all' || rowDay === day);
+
+        if (showRoute && showDay) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function resetFilters() {
+      document.getElementById('routeFilter').value = 'all';
+      document.getElementById('dayFilter').value = 'all';
+      filterSchedule();
+    }
+  </script>
+
+</body>
+
+</html>

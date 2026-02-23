@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ticket Management - SmartBus Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <meta name="description" content="SmartBus Admin - Ticket Management">
+</head>
+
+<body>
+
+  <div class="dashboard-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span>&#128652; SmartBus Admin</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <a href="dashboard.html"><span class="nav-icon">&#128202;</span> Dashboard</a>
+          <a href="routes.html"><span class="nav-icon">&#128739;</span> Routes</a>
+          <a href="buses.html"><span class="nav-icon">&#128652;</span> Fleet</a>
+          <a href="users.html"><span class="nav-icon">&#128101;</span> Users</a>
+          <a href="tickets.html" class="active"><span class="nav-icon">&#127915;</span> Tickets</a>
+          <a href="reports.html"><span class="nav-icon">&#128200;</span> Reports</a>
+        </div>
+        <div class="nav-section">
+          <h4>Account</h4>
+          <a href="settings.html"><span class="nav-icon">&#9881;</span> Settings</a>
+          <a href="../login.html"><span class="nav-icon">&#128682;</span> Logout</a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <p>&copy; 2026 SmartBus</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-content">
+
+      <!-- Topbar -->
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+          <h1 class="page-title">Ticket Management</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-menu">
+            <span class="user-avatar">A</span>
+            <span>Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Area -->
+      <main class="dashboard-main">
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">&#127915;</div>
+            <div class="stat-info">
+              <h3>Today's Sales</h3>
+              <p class="stat-value">1,284</p>
+              <p class="stat-change">+8.2% from yesterday</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">&#128176;</div>
+            <div class="stat-info">
+              <h3>Revenue</h3>
+              <p class="stat-value">$8,450</p>
+              <p class="stat-change">+12.5% from yesterday</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon yellow">&#128260;</div>
+            <div class="stat-info">
+              <h3>Refunds</h3>
+              <p class="stat-value">12</p>
+              <p class="stat-change">-3.1% from yesterday</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon red">&#127380;</div>
+            <div class="stat-info">
+              <h3>Active Passes</h3>
+              <p class="stat-value">3,200</p>
+              <p class="stat-change">+5.4% from last week</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="card">
+          <div class="card-header">
+            <div class="tabs">
+              <button class="tab-btn active" onclick="switchTab('allTickets', this)">All Tickets</button>
+              <button class="tab-btn" onclick="switchTab('passes', this)">Passes</button>
+            </div>
+          </div>
+          <div class="card-body">
+
+            <!-- All Tickets Tab -->
+            <div class="tab-content active" id="allTickets">
+              <div class="table-responsive">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Ticket ID</th>
+                      <th>Passenger</th>
+                      <th>Route</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Fare</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>TK-10001</td>
+                      <td>Amir Karimov</td>
+                      <td>Route 15 - Downtown Express</td>
+                      <td>2026-02-18</td>
+                      <td>08:30</td>
+                      <td>$3.50</td>
+                      <td><span class="badge badge-success">Active</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>TK-10002</td>
+                      <td>Nodira Sultonova</td>
+                      <td>Route 7 - University Line</td>
+                      <td>2026-02-18</td>
+                      <td>09:15</td>
+                      <td>$2.75</td>
+                      <td><span class="badge badge-success">Active</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>TK-10003</td>
+                      <td>Jasur Rahimov</td>
+                      <td>Route 22 - Airport Shuttle</td>
+                      <td>2026-02-17</td>
+                      <td>14:00</td>
+                      <td>$5.00</td>
+                      <td><span class="badge badge-warning">Used</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>TK-10004</td>
+                      <td>Malika Yusupova</td>
+                      <td>Route 3 - Riverside Loop</td>
+                      <td>2026-02-17</td>
+                      <td>11:45</td>
+                      <td>$2.75</td>
+                      <td><span class="badge badge-danger">Cancelled</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>TK-10005</td>
+                      <td>Bobur Toshmatov</td>
+                      <td>Route 15 - Downtown Express</td>
+                      <td>2026-02-16</td>
+                      <td>07:20</td>
+                      <td>$3.50</td>
+                      <td><span class="badge badge-warning">Used</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>TK-10006</td>
+                      <td>Dilnoza Mirzaeva</td>
+                      <td>Route 9 - Industrial Park</td>
+                      <td>2026-02-15</td>
+                      <td>16:30</td>
+                      <td>$3.00</td>
+                      <td><span class="badge badge-secondary">Expired</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>TK-10007</td>
+                      <td>Sardor Alimov</td>
+                      <td>Route 7 - University Line</td>
+                      <td>2026-02-18</td>
+                      <td>10:00</td>
+                      <td>$2.75</td>
+                      <td><span class="badge badge-success">Active</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>TK-10008</td>
+                      <td>Gulnora Xasanova</td>
+                      <td>Route 22 - Airport Shuttle</td>
+                      <td>2026-02-14</td>
+                      <td>13:15</td>
+                      <td>$5.00</td>
+                      <td><span class="badge badge-secondary">Expired</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Passes Tab -->
+            <div class="tab-content" id="passes" style="display: none;">
+              <div class="table-responsive">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Pass ID</th>
+                      <th>Holder</th>
+                      <th>Type</th>
+                      <th>Valid From</th>
+                      <th>Valid To</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>PS-5001</td>
+                      <td>Amir Karimov</td>
+                      <td><span class="badge badge-primary">Monthly</span></td>
+                      <td>2026-02-01</td>
+                      <td>2026-02-28</td>
+                      <td><span class="badge badge-success">Active</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>PS-5002</td>
+                      <td>Nodira Sultonova</td>
+                      <td><span class="badge badge-secondary">Weekly</span></td>
+                      <td>2026-02-17</td>
+                      <td>2026-02-23</td>
+                      <td><span class="badge badge-success">Active</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>PS-5003</td>
+                      <td>Jasur Rahimov</td>
+                      <td><span class="badge badge-primary">Monthly</span></td>
+                      <td>2026-02-01</td>
+                      <td>2026-02-28</td>
+                      <td><span class="badge badge-success">Active</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>PS-5004</td>
+                      <td>Malika Yusupova</td>
+                      <td><span class="badge badge-secondary">Weekly</span></td>
+                      <td>2026-02-10</td>
+                      <td>2026-02-16</td>
+                      <td><span class="badge badge-secondary">Expired</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>PS-5005</td>
+                      <td>Bobur Toshmatov</td>
+                      <td><span class="badge badge-primary">Monthly</span></td>
+                      <td>2026-01-01</td>
+                      <td>2026-01-31</td>
+                      <td><span class="badge badge-secondary">Expired</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>PS-5006</td>
+                      <td>Dilnoza Mirzaeva</td>
+                      <td><span class="badge badge-primary">Monthly</span></td>
+                      <td>2026-02-01</td>
+                      <td>2026-02-28</td>
+                      <td><span class="badge badge-success">Active</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>PS-5007</td>
+                      <td>Otabek Nazarov</td>
+                      <td><span class="badge badge-secondary">Weekly</span></td>
+                      <td>2026-02-17</td>
+                      <td>2026-02-23</td>
+                      <td><span class="badge badge-success">Active</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                      <td>PS-5008</td>
+                      <td>Zarina Abdullayeva</td>
+                      <td><span class="badge badge-primary">Monthly</span></td>
+                      <td>2026-02-01</td>
+                      <td>2026-02-28</td>
+                      <td><span class="badge badge-danger">Cancelled</span></td>
+                      <td><button class="btn btn-secondary btn-sm">View</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+          <div class="card-footer">
+            <div class="pagination">
+              <a href="#">&laquo;</a>
+              <a href="#" class="active">1</a>
+              <a href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">&raquo;</a>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script>
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(function(tab) {
+        tab.style.display = 'none';
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      document.getElementById(tabId).style.display = 'block';
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Management - SmartBus Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <meta name="description" content="SmartBus Admin - User Management">
+</head>
+
+<body>
+
+  <div class="dashboard-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span>&#128652; SmartBus Admin</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <a href="dashboard.html"><span class="nav-icon">&#128202;</span> Dashboard</a>
+          <a href="routes.html"><span class="nav-icon">&#128739;</span> Routes</a>
+          <a href="buses.html"><span class="nav-icon">&#128652;</span> Fleet</a>
+          <a href="users.html" class="active"><span class="nav-icon">&#128101;</span> Users</a>
+          <a href="tickets.html"><span class="nav-icon">&#127915;</span> Tickets</a>
+          <a href="reports.html"><span class="nav-icon">&#128200;</span> Reports</a>
+        </div>
+        <div class="nav-section">
+          <h4>Account</h4>
+          <a href="settings.html"><span class="nav-icon">&#9881;</span> Settings</a>
+          <a href="../login.html"><span class="nav-icon">&#128682;</span> Logout</a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <p>&copy; 2026 SmartBus</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-content">
+
+      <!-- Topbar -->
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+          <h1 class="page-title">User Management</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-menu">
+            <span class="user-avatar">A</span>
+            <span>Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Area -->
+      <main class="dashboard-main">
+
+        <!-- Users Card -->
+        <div class="card">
+          <div class="card-header">
+            <input type="text" id="userSearch" class="search-box" placeholder="Search users...">
+            <button class="btn btn-primary" onclick="openModal('addUserModal')">Add User</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="usersTable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Registered</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Amir Karimov</td>
+                    <td>amir.karimov@email.com</td>
+                    <td>+998 90 123 4567</td>
+                    <td><span class="badge badge-primary">Admin</span></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>2025-08-15</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Nodira Sultonova</td>
+                    <td>nodira.s@email.com</td>
+                    <td>+998 91 234 5678</td>
+                    <td><span class="badge badge-secondary">User</span></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>2025-09-02</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Jasur Rahimov</td>
+                    <td>jasur.r@email.com</td>
+                    <td>+998 93 345 6789</td>
+                    <td><span class="badge badge-warning">Driver</span></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>2025-09-10</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Malika Yusupova</td>
+                    <td>malika.y@email.com</td>
+                    <td>+998 94 456 7890</td>
+                    <td><span class="badge badge-secondary">User</span></td>
+                    <td><span class="badge badge-danger">Suspended</span></td>
+                    <td>2025-10-05</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Bobur Toshmatov</td>
+                    <td>bobur.t@email.com</td>
+                    <td>+998 95 567 8901</td>
+                    <td><span class="badge badge-warning">Driver</span></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>2025-10-18</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>Dilnoza Mirzaeva</td>
+                    <td>dilnoza.m@email.com</td>
+                    <td>+998 97 678 9012</td>
+                    <td><span class="badge badge-secondary">User</span></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>2025-11-01</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>Sardor Alimov</td>
+                    <td>sardor.a@email.com</td>
+                    <td>+998 90 789 0123</td>
+                    <td><span class="badge badge-warning">Driver</span></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>2025-11-14</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td>Gulnora Xasanova</td>
+                    <td>gulnora.x@email.com</td>
+                    <td>+998 91 890 1234</td>
+                    <td><span class="badge badge-secondary">User</span></td>
+                    <td><span class="badge badge-danger">Suspended</span></td>
+                    <td>2025-12-03</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>Otabek Nazarov</td>
+                    <td>otabek.n@email.com</td>
+                    <td>+998 93 901 2345</td>
+                    <td><span class="badge badge-primary">Admin</span></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>2026-01-10</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td>Zarina Abdullayeva</td>
+                    <td>zarina.a@email.com</td>
+                    <td>+998 94 012 3456</td>
+                    <td><span class="badge badge-secondary">User</span></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>2026-02-01</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="pagination">
+              <a href="#">&laquo;</a>
+              <a href="#" class="active">1</a>
+              <a href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">4</a>
+              <a href="#">&raquo;</a>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Add User Modal -->
+  <div class="modal-overlay" id="addUserModal" style="display: none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Add New User</h3>
+        <button class="modal-close" onclick="closeModal('addUserModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-row grid-2">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" class="form-control" placeholder="Enter first name">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" class="form-control" placeholder="Enter last name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Enter email address">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" class="form-control" placeholder="Enter phone number">
+          </div>
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" class="form-control">
+              <option value="">Select role</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+              <option value="driver">Driver</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Enter password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('addUserModal')">Cancel</button>
+        <button class="btn btn-primary">Save User</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+  </script>
+
+</body>
+
+</html>

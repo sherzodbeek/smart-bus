@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings - SmartBus Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+</head>
+
+<body>
+  <div class="dashboard-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="brand-icon">&#128652;</span>
+        <h2>SmartBus Admin</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">Main</div>
+        <a href="dashboard.html"><span class="nav-icon">&#128202;</span> Dashboard</a>
+        <a href="routes.html"><span class="nav-icon">&#128739;</span> Routes</a>
+        <a href="buses.html"><span class="nav-icon">&#128652;</span> Fleet</a>
+        <a href="users.html"><span class="nav-icon">&#128101;</span> Users</a>
+        <a href="tickets.html"><span class="nav-icon">&#127915;</span> Tickets</a>
+        <a href="reports.html"><span class="nav-icon">&#128200;</span> Reports</a>
+        <div class="nav-section">Account</div>
+        <a href="settings.html" class="active"><span class="nav-icon">&#9881;</span> Settings</a>
+        <a href="../login.html"><span class="nav-icon">&#128682;</span> Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <div class="dashboard-content">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+          <h1 class="page-title">Settings</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-menu">
+            <div class="user-avatar">A</div>
+            <span>Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-main">
+
+        <div class="grid-2">
+          <!-- General Settings -->
+          <div class="card">
+            <div class="card-header">
+              <h3>General Settings</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="siteName">Site Name</label>
+                <input type="text" id="siteName" class="form-control" value="SmartBus">
+              </div>
+              <div class="form-group">
+                <label for="siteEmail">Contact Email</label>
+                <input type="email" id="siteEmail" class="form-control" value="admin@smartbus.com">
+              </div>
+              <div class="form-group">
+                <label for="sitePhone">Support Phone</label>
+                <input type="tel" id="sitePhone" class="form-control" value="+1 (555) 123-4567">
+              </div>
+              <div class="form-group">
+                <label for="timezone">Timezone</label>
+                <select id="timezone" class="form-control">
+                  <option>UTC-05:00 Eastern Time</option>
+                  <option>UTC-06:00 Central Time</option>
+                  <option>UTC-07:00 Mountain Time</option>
+                  <option>UTC-08:00 Pacific Time</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="currency">Currency</label>
+                <select id="currency" class="form-control">
+                  <option>USD ($)</option>
+                  <option>EUR (&euro;)</option>
+                  <option>GBP (&pound;)</option>
+                </select>
+              </div>
+              <button class="btn btn-primary">Save General Settings</button>
+            </div>
+          </div>
+
+          <!-- Ticket Settings -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Ticket Settings</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="ticketPrefix">Ticket ID Prefix</label>
+                <input type="text" id="ticketPrefix" class="form-control" value="SB-">
+              </div>
+              <div class="form-group">
+                <label for="bookingWindow">Advance Booking (days)</label>
+                <input type="number" id="bookingWindow" class="form-control" value="30">
+              </div>
+              <div class="form-group">
+                <label for="cancelWindow">Cancellation Window (hours)</label>
+                <input type="number" id="cancelWindow" class="form-control" value="24">
+              </div>
+              <div class="form-group">
+                <label for="maxPassengers">Max Passengers per Booking</label>
+                <input type="number" id="maxPassengers" class="form-control" value="10">
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="allowRefund" checked>
+                <label for="allowRefund">Allow ticket refunds</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="allowTransfer" checked>
+                <label for="allowTransfer">Allow ticket transfers</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="enableQR">
+                <label for="enableQR">Enable QR code tickets</label>
+              </div>
+              <br>
+              <button class="btn btn-primary">Save Ticket Settings</button>
+            </div>
+          </div>
+
+          <!-- Notification Settings -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Notification Settings</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-check">
+                <input type="checkbox" id="emailNotif" checked>
+                <label for="emailNotif">Email notifications for new bookings</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="smsNotif" checked>
+                <label for="smsNotif">SMS alerts for schedule changes</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="delayNotif" checked>
+                <label for="delayNotif">Delay notifications to passengers</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="dailyReport">
+                <label for="dailyReport">Daily summary report email</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="weeklyReport" checked>
+                <label for="weeklyReport">Weekly analytics report</label>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="reportEmail">Report Email Address</label>
+                <input type="email" id="reportEmail" class="form-control" value="reports@smartbus.com">
+              </div>
+              <button class="btn btn-primary">Save Notification Settings</button>
+            </div>
+          </div>
+
+          <!-- Security Settings -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Security Settings</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="sessionTimeout">Session Timeout (minutes)</label>
+                <input type="number" id="sessionTimeout" class="form-control" value="30">
+              </div>
+              <div class="form-group">
+                <label for="maxAttempts">Max Login Attempts</label>
+                <input type="number" id="maxAttempts" class="form-control" value="5">
+              </div>
+              <div class="form-group">
+                <label for="passMinLength">Minimum Password Length</label>
+                <input type="number" id="passMinLength" class="form-control" value="8">
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="twoFactor">
+                <label for="twoFactor">Enable two-factor authentication</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="forceSSL" checked>
+                <label for="forceSSL">Force SSL connections</label>
+              </div>
+              <br>
+              <button class="btn btn-primary">Save Security Settings</button>
+
+              <hr style="margin: 1.5rem 0;">
+
+              <h4 style="margin-bottom: 0.75rem; font-size: 0.95rem;">Danger Zone</h4>
+              <button class="btn btn-danger btn-sm">Clear All Sessions</button>
+              <button class="btn btn-danger btn-sm" style="margin-left: 0.5rem;">Reset to Defaults</button>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/app.js"></script>
+</body>
+
+</html>

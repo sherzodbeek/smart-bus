@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Ticket - SmartBus</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>&#128652; SmartBus</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <a href="dashboard.html"><span class="nav-icon">&#128202;</span> Dashboard</a>
+                    <a href="buy-ticket.html" class="active"><span class="nav-icon">&#127915;</span> Buy Ticket</a>
+                    <a href="my-tickets.html"><span class="nav-icon">&#128203;</span> My Tickets</a>
+                    <a href="routes.html"><span class="nav-icon">&#128739;</span> Routes &amp; Maps</a>
+                    <a href="profile.html"><span class="nav-icon">&#128100;</span> My Profile</a>
+                </div>
+                <div class="nav-section">
+                    <h4>Support</h4>
+                    <a href="../contact.html"><span class="nav-icon">&#128172;</span> Help Center</a>
+                    <a href="../login.html"><span class="nav-icon">&#128682;</span> Logout</a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <p>&copy; 2026 SmartBus</p>
+            </div>
+        </aside>
+
+        <div class="dashboard-content">
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+                    <h1 class="page-title">Buy Ticket</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="user-menu">
+                        <div class="user-avatar">B</div>
+                        <span>Bekzod</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-main">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Search Trips</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="searchTripsForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fromStop">From</label>
+                                    <select id="fromStop" class="form-control" required>
+                                        <option value="">Select departure stop</option>
+                                        <option value="downtown">Downtown Terminal</option>
+                                        <option value="airport">Airport Station</option>
+                                        <option value="central-park">Central Park</option>
+                                        <option value="university">University Campus</option>
+                                        <option value="riverside">Riverside Mall</option>
+                                        <option value="tech-park">Tech Park</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="toStop">To</label>
+                                    <select id="toStop" class="form-control" required>
+                                        <option value="">Select arrival stop</option>
+                                        <option value="downtown">Downtown Terminal</option>
+                                        <option value="airport">Airport Station</option>
+                                        <option value="central-park">Central Park</option>
+                                        <option value="university">University Campus</option>
+                                        <option value="riverside">Riverside Mall</option>
+                                        <option value="tech-park">Tech Park</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="tripDate">Date</label>
+                                    <input type="date" id="tripDate" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="passengers">Number of Passengers</label>
+                                    <input type="number" id="passengers" class="form-control" min="1" max="10" value="1" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Trip Type</label>
+                                <div class="form-check">
+                                    <input type="radio" id="oneWay" name="tripType" value="one-way" checked>
+                                    <label for="oneWay">One Way</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" id="roundTrip" name="tripType" value="round-trip">
+                                    <label for="roundTrip">Round Trip</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">Search Available Trips</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Available Trips</h3>
+                    </div>
+                    <div class="card-body" id="availableTrips">
+                        <div class="ticket-card">
+                            <div class="ticket-route">
+                                <div class="route-label">From</div>
+                                <div class="route-name">Downtown Terminal</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-label">To</div>
+                                <div class="route-name">Airport Station</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Departure</span>
+                                    <span class="detail-value">08:00 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Arrival</span>
+                                    <span class="detail-value">09:15 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Duration</span>
+                                    <span class="detail-value">1h 15m</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Seats Available</span>
+                                    <span class="detail-value">18</span>
+                                </div>
+                            </div>
+                            <div class="ticket-price">$12.50</div>
+                            <button class="btn btn-primary" onclick="openBookingModal('Downtown Terminal', 'Airport Station', '08:00 AM', '09:15 AM', '1h 15m', 12.50)">Book Now</button>
+                        </div>
+
+                        <div class="ticket-card">
+                            <div class="ticket-route">
+                                <div class="route-label">From</div>
+                                <div class="route-name">Downtown Terminal</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-label">To</div>
+                                <div class="route-name">Airport Station</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Departure</span>
+                                    <span class="detail-value">10:30 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Arrival</span>
+                                    <span class="detail-value">11:45 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Duration</span>
+                                    <span class="detail-value">1h 15m</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Seats Available</span>
+                                    <span class="detail-value">7</span>
+                                </div>
+                            </div>
+                            <div class="ticket-price">$12.50</div>
+                            <button class="btn btn-primary" onclick="openBookingModal('Downtown Terminal', 'Airport Station', '10:30 AM', '11:45 AM', '1h 15m', 12.50)">Book Now</button>
+                        </div>
+
+                        <div class="ticket-card">
+                            <div class="ticket-route">
+                                <div class="route-label">From</div>
+                                <div class="route-name">Downtown Terminal</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-label">To</div>
+                                <div class="route-name">Airport Station</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Departure</span>
+                                    <span class="detail-value">02:00 PM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Arrival</span>
+                                    <span class="detail-value">03:10 PM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Duration</span>
+                                    <span class="detail-value">1h 10m</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Seats Available</span>
+                                    <span class="detail-value">24</span>
+                                </div>
+                            </div>
+                            <div class="ticket-price">$11.00</div>
+                            <button class="btn btn-primary" onclick="openBookingModal('Downtown Terminal', 'Airport Station', '02:00 PM', '03:10 PM', '1h 10m', 11.00)">Book Now</button>
+                        </div>
+
+                        <div class="ticket-card">
+                            <div class="ticket-route">
+                                <div class="route-label">From</div>
+                                <div class="route-name">Downtown Terminal</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-label">To</div>
+                                <div class="route-name">Airport Station</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Departure</span>
+                                    <span class="detail-value">06:00 PM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Arrival</span>
+                                    <span class="detail-value">07:20 PM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Duration</span>
+                                    <span class="detail-value">1h 20m</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Seats Available</span>
+                                    <span class="detail-value">31</span>
+                                </div>
+                            </div>
+                            <div class="ticket-price">$11.00</div>
+                            <button class="btn btn-primary" onclick="openBookingModal('Downtown Terminal', 'Airport Station', '06:00 PM', '07:20 PM', '1h 20m', 11.00)">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="bookingModal" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Confirm Booking</h3>
+                <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="ticket-card">
+                    <div class="ticket-route">
+                        <div class="route-label">From</div>
+                        <div class="route-name" id="modalFrom">Downtown Terminal</div>
+                        <div class="route-arrow">&#8594;</div>
+                        <div class="route-label">To</div>
+                        <div class="route-name" id="modalTo">Airport Station</div>
+                    </div>
+                    <div class="ticket-details">
+                        <div class="ticket-detail-item">
+                            <span class="detail-label">Departure</span>
+                            <span class="detail-value" id="modalDeparture">08:00 AM</span>
+                        </div>
+                        <div class="ticket-detail-item">
+                            <span class="detail-label">Arrival</span>
+                            <span class="detail-value" id="modalArrival">09:15 AM</span>
+                        </div>
+                        <div class="ticket-detail-item">
+                            <span class="detail-label">Duration</span>
+                            <span class="detail-value" id="modalDuration">1h 15m</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Passengers</label>
+                    <span id="modalPassengers" class="detail-value">1</span>
+                </div>
+                <div class="form-group">
+                    <label>Total Price</label>
+                    <span id="modalTotal" class="stat-value">$12.50</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeBookingModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="confirmBooking()">Confirm &amp; Pay</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        var currentBooking = null;
+        var bookedTrips = JSON.parse(localStorage.getItem('bookedTrips') || '{}');
+
+        function getTripKey(from, to, departure, arrival) {
+            return [from, to, departure, arrival].join('|');
+        }
+
+        function displayBookingMessage(message, type) {
+            if (typeof showAlert === 'function') {
+                showAlert(message, type);
+                return;
+            }
+
+            var main = document.querySelector('.dashboard-main');
+            if (!main) {
+                alert(message);
+                return;
+            }
+
+            var existing = document.querySelectorAll('.booking-alert');
+            existing.forEach(function(item) { item.remove(); });
+
+            var alertBox = document.createElement('div');
+            alertBox.className = 'alert alert-' + (type || 'info') + ' booking-alert';
+            alertBox.textContent = message;
+            main.insertBefore(alertBox, main.firstChild);
+        }
+
+        function applyBookedTripButtons() {
+            var buttons = document.querySelectorAll('#availableTrips .book-now-btn');
+            buttons.forEach(function(button) {
+                var tripKey = button.getAttribute('data-trip-key');
+                if (tripKey && bookedTrips[tripKey]) {
+                    button.textContent = 'Booked';
+                    button.disabled = true;
+                    button.classList.remove('btn-primary');
+                    button.classList.add('btn-success');
+                }
+            });
+        }
+
+        function openBookingModal(from, to, departure, arrival, duration, price, buttonEl) {
+            var tripKey = getTripKey(from, to, departure, arrival);
+            if (bookedTrips[tripKey]) {
+                displayBookingMessage('This trip is already booked.', 'warning');
+                return;
+            }
+
+            var passengers = parseInt(document.getElementById('passengers').value) || 1;
+            document.getElementById('modalFrom').textContent = from;
+            document.getElementById('modalTo').textContent = to;
+            document.getElementById('modalDeparture').textContent = departure;
+            document.getElementById('modalArrival').textContent = arrival;
+            document.getElementById('modalDuration').textContent = duration;
+            document.getElementById('modalPassengers').textContent = passengers;
+            document.getElementById('modalTotal').textContent = '$' + (price * passengers).toFixed(2);
+            currentBooking = {
+                key: tripKey,
+                total: (price * passengers).toFixed(2),
+                button: buttonEl || null
+            };
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        function confirmBooking() {
+            if (!currentBooking) {
+                closeBookingModal();
+                return;
+            }
+
+            var paymentId = 'PAY-' + Date.now().toString().slice(-6);
+            var ticketId = 'TK-' + Math.floor(1000 + Math.random() * 9000);
+            bookedTrips[currentBooking.key] = {
+                paymentId: paymentId,
+                ticketId: ticketId,
+                amount: currentBooking.total
+            };
+            localStorage.setItem('bookedTrips', JSON.stringify(bookedTrips));
+
+            if (currentBooking.button) {
+                currentBooking.button.textContent = 'Booked';
+                currentBooking.button.disabled = true;
+                currentBooking.button.classList.remove('btn-primary');
+                currentBooking.button.classList.add('btn-success');
+            } else {
+                applyBookedTripButtons();
+            }
+
+            displayBookingMessage('Payment confirmed. Payment ID: ' + paymentId + '. Ticket: ' + ticketId + '. Status: Booked.', 'success');
+            closeBookingModal();
+            currentBooking = null;
+        }
+
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) closeBookingModal();
+        });
+
+        document.addEventListener('tripsRendered', applyBookedTripButtons);
+        document.addEventListener('DOMContentLoaded', applyBookedTripButtons);
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fares - SmartBus</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <span class="brand-icon">&#128652;</span>
+      SmartBus
+    </a>
+    <button class="navbar-toggle" onclick="toggleNav()">&#9776;</button>
+    <ul class="navbar-nav" id="navbarNav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="routes.html">Routes</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html" class="btn btn-primary">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <section class="hero" style="padding: 3rem 2rem;">
+    <h1>Fares & Pricing</h1>
+    <p>Affordable fares for every commuter. Choose the plan that works best for you.</p>
+  </section>
+
+  <!-- Fare Types -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Ticket Types</h2>
+      <p>Flexible options for all travel needs</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#127915;</div>
+        <h3>Single Ride</h3>
+        <p style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 1rem 0;">$2.50</p>
+        <p>One-way ticket valid for a single trip on any local route. Valid for 2 hours from purchase.</p>
+        <br>
+        <a href="user/buy-ticket.html" class="btn btn-primary">Buy Now</a>
+      </div>
+      <div class="feature-card" style="border-color: var(--primary); border-width: 2px;">
+        <span class="badge badge-primary" style="margin-bottom: 0.5rem;">Most Popular</span>
+        <div class="feature-icon">&#128197;</div>
+        <h3>Monthly Pass</h3>
+        <p style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 1rem 0;">$65.00</p>
+        <p>Unlimited rides for 30 days on all local and express routes. Best value for daily commuters.</p>
+        <br>
+        <a href="user/buy-ticket.html" class="btn btn-primary">Get Pass</a>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128198;</div>
+        <h3>Weekly Pass</h3>
+        <p style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 1rem 0;">$20.00</p>
+        <p>Unlimited rides for 7 days. Great for visitors and short-term commuters.</p>
+        <br>
+        <a href="user/buy-ticket.html" class="btn btn-primary">Get Pass</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fare Table -->
+  <section class="section" style="background: var(--white);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Route-Based Fares</h2>
+        <p>Fares vary by route type and distance</p>
+      </div>
+      <div class="card">
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Route Type</th>
+                <th>Base Fare</th>
+                <th>Per Mile</th>
+                <th>Max Fare</th>
+                <th>Transfer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge-primary">Local</span></td>
+                <td>$1.50</td>
+                <td>$0.25</td>
+                <td>$2.50</td>
+                <td>Free (within 2 hrs)</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-success">Express</span></td>
+                <td>$2.50</td>
+                <td>$0.35</td>
+                <td>$5.00</td>
+                <td>Free (within 2 hrs)</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-warning">Night</span></td>
+                <td>$2.00</td>
+                <td>$0.30</td>
+                <td>$4.00</td>
+                <td>$1.00</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-danger">Aeroport</span></td>
+                <td>$5.00</td>
+                <td>$0.50</td>
+                <td>$12.00</td>
+                <td>Not available</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discounts -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Discounts & Concessions</h2>
+      <p>Special fares for eligible riders</p>
+    </div>
+    <div class="container">
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-body" style="text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">&#128668;</div>
+            <h3 style="margin-bottom: 0.5rem;">Students</h3>
+            <p class="badge badge-success" style="font-size: 1.1rem; padding: 0.3rem 1rem;">50% Off</p>
+            <p style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-secondary);">Valid student ID required. Applies to all ticket types.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body" style="text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">&#128116;</div>
+            <h3 style="margin-bottom: 0.5rem;">Seniors (65+)</h3>
+            <p class="badge badge-success" style="font-size: 1.1rem; padding: 0.3rem 1rem;">40% Off</p>
+            <p style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-secondary);">Valid government ID required. Available on all routes.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body" style="text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">&#9855;</div>
+            <h3 style="margin-bottom: 0.5rem;">Disability</h3>
+            <p class="badge badge-success" style="font-size: 1.1rem; padding: 0.3rem 1rem;">Free</p>
+            <p style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-secondary);">With valid disability pass. One companion rides free.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>&#128652; SmartBus</h4>
+        <p>Smart Transportation & Ticketing Integration platform. Making public transport accessible, efficient, and enjoyable for everyone.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="routes.html">Routes</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="fares.html">Fares</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <ul>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="user/dashboard.html">My Dashboard</a></li>
+          <li><a href="user/my-tickets.html">My Tickets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Help Center</a></li>
+          <li><a href="contact.html">FAQ</a></li>
+          <li><a href="contact.html">Report Issue</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 SmartBus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SmartBus</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>&#128652; SmartBus</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <a href="dashboard.html" class="active"><span class="nav-icon">&#128202;</span> Dashboard</a>
+                    <a href="buy-ticket.html"><span class="nav-icon">&#127915;</span> Buy Ticket</a>
+                    <a href="my-tickets.html"><span class="nav-icon">&#128203;</span> My Tickets</a>
+                    <a href="routes.html"><span class="nav-icon">&#128739;</span> Routes &amp; Maps</a>
+                    <a href="profile.html"><span class="nav-icon">&#128100;</span> My Profile</a>
+                </div>
+                <div class="nav-section">
+                    <h4>Support</h4>
+                    <a href="../contact.html"><span class="nav-icon">&#128172;</span> Help Center</a>
+                    <a href="../login.html"><span class="nav-icon">&#128682;</span> Logout</a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <p>&copy; 2026 SmartBus</p>
+            </div>
+        </aside>
+
+        <div class="dashboard-content">
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="user-menu">
+                        <div class="user-avatar">B</div>
+                        <span>Bekzod</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-main">
+                <div class="alert alert-info">
+                    Welcome back, Bekzod! You have 2 upcoming trips.
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">&#127915;</div>
+                        <div class="stat-info">
+                            <h3>Active Tickets</h3>
+                            <div class="stat-value">3</div>
+                            <div class="stat-change">+1 this week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">&#128652;</div>
+                        <div class="stat-info">
+                            <h3>Trips This Month</h3>
+                            <div class="stat-value">12</div>
+                            <div class="stat-change">+3 from last month</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon yellow">&#128176;</div>
+                        <div class="stat-info">
+                            <h3>Total Spent</h3>
+                            <div class="stat-value">$145</div>
+                            <div class="stat-change">This month</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red">&#11088;</div>
+                        <div class="stat-info">
+                            <h3>Loyalty Points</h3>
+                            <div class="stat-value">1,250</div>
+                            <div class="stat-change">+150 earned</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Upcoming Trips</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="ticket-card">
+                            <div class="ticket-route">
+                                <div class="route-label">From</div>
+                                <div class="route-name">Downtown Terminal</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-label">To</div>
+                                <div class="route-name">Airport Station</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Date</span>
+                                    <span class="detail-value">Feb 20, 2026</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Time</span>
+                                    <span class="detail-value">08:30 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Seat</span>
+                                    <span class="detail-value">A12</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Status</span>
+                                    <span class="badge badge-success">Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="ticket-price">$12.50</div>
+                        </div>
+
+                        <div class="ticket-card">
+                            <div class="ticket-route">
+                                <div class="route-label">From</div>
+                                <div class="route-name">Central Park</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-label">To</div>
+                                <div class="route-name">University Campus</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Date</span>
+                                    <span class="detail-value">Feb 22, 2026</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Time</span>
+                                    <span class="detail-value">10:15 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Seat</span>
+                                    <span class="detail-value">B05</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Status</span>
+                                    <span class="badge badge-warning">Pending</span>
+                                </div>
+                            </div>
+                            <div class="ticket-price">$8.00</div>
+                        </div>
+
+                        <div class="ticket-card">
+                            <div class="ticket-route">
+                                <div class="route-label">From</div>
+                                <div class="route-name">Riverside Mall</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-label">To</div>
+                                <div class="route-name">Tech Park</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Date</span>
+                                    <span class="detail-value">Feb 25, 2026</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Time</span>
+                                    <span class="detail-value">02:00 PM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Seat</span>
+                                    <span class="detail-value">C08</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Status</span>
+                                    <span class="badge badge-success">Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="ticket-price">$10.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Feb 18, 2026</td>
+                                        <td>Ticket Purchase - Downtown to Airport</td>
+                                        <td>$12.50</td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Feb 16, 2026</td>
+                                        <td>Ticket Purchase - Central Park to University</td>
+                                        <td>$8.00</td>
+                                        <td><span class="badge badge-warning">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Feb 14, 2026</td>
+                                        <td>Refund - Cancelled Trip to Riverside Mall</td>
+                                        <td>+$6.50</td>
+                                        <td><span class="badge badge-primary">Refunded</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Feb 12, 2026</td>
+                                        <td>Ticket Purchase - Tech Park to Mall</td>
+                                        <td>$10.00</td>
+                                        <td><span class="badge badge-success">Completed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Feb 10, 2026</td>
+                                        <td>Loyalty Points Redeemed</td>
+                                        <td>-500 pts</td>
+                                        <td><span class="badge badge-secondary">Used</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

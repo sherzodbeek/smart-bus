@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - SmartBus</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <meta name="description" content="Get in touch with SmartBus support team">
+  <style>
+    .hero-sm {
+      background: linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .hero-sm h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .hero-sm p {
+      opacity: 0.9;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .contact-info-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-info-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      box-shadow: var(--shadow);
+    }
+    .contact-info-card .info-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius);
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-info-card h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .contact-info-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 0.75rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.125rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: inherit;
+      color: var(--text);
+      transition: background 0.2s;
+    }
+    .faq-question:hover {
+      background: var(--bg);
+    }
+    .faq-question .faq-toggle {
+      font-size: 1.25rem;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-question .faq-toggle {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <span class="brand-icon">&#128652;</span>
+      SmartBus
+    </a>
+    <button class="navbar-toggle" onclick="toggleNav()">&#9776;</button>
+    <ul class="navbar-nav" id="navbarNav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="routes.html">Routes</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="login.html" class="btn btn-primary">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="hero-sm">
+    <h1>Contact Us</h1>
+    <p>Have a question or need help? We are here for you. Reach out and our team will respond promptly.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section">
+    <div class="contact-grid">
+
+      <!-- Left: Contact Form -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Send Us a Message</h3>
+        </div>
+        <div class="card-body">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="contactName">Full Name</label>
+              <input type="text" id="contactName" class="form-control" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <select id="contactSubject" class="form-control" required>
+                <option value="">Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="ticketing">Ticketing Issue</option>
+                <option value="routes">Route Information</option>
+                <option value="lost">Lost & Found</option>
+                <option value="feedback">Feedback & Suggestions</option>
+                <option value="complaint">File a Complaint</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" class="form-control" placeholder="Describe your question or issue..." rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Send Message</button>
+          </form>
+          <div id="contactAlert" style="display: none; margin-top: 1rem;"></div>
+        </div>
+      </div>
+
+      <!-- Right: Contact Info Cards -->
+      <div class="contact-info-cards">
+        <div class="contact-info-card">
+          <div class="info-icon">&#128205;</div>
+          <div>
+            <h4>Our Address</h4>
+            <p>123 Transport Avenue<br>Downtown District<br>Metro City, MC 10001</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="info-icon">&#128222;</div>
+          <div>
+            <h4>Phone</h4>
+            <p>Main: +1 (555) 234-5678<br>Toll-Free: 1-800-SMARTBUS</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="info-icon">&#9993;</div>
+          <div>
+            <h4>Email</h4>
+            <p>General: info@smartbus.com<br>Support: support@smartbus.com</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="info-icon">&#128336;</div>
+          <div>
+            <h4>Working Hours</h4>
+            <p>Monday - Friday: 6:00 AM - 10:00 PM<br>Saturday: 7:00 AM - 9:00 PM<br>Sunday: 8:00 AM - 8:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" style="background: var(--bg);">
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+      <p>Find quick answers to common questions about our services</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I purchase a bus ticket online?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          To purchase a ticket, create a free SmartBus account or log in to your existing one. Navigate to the Routes page, select your desired route, choose your departure time, and proceed to checkout. You can pay using a credit/debit card or your SmartBus wallet balance. Your digital ticket with a QR code will be sent to your email and available in your dashboard.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I cancel or refund my ticket?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes, tickets can be cancelled up to 2 hours before the scheduled departure for a full refund. Cancellations made within 2 hours of departure are eligible for a 50% refund or a free reschedule to another available time on the same route. To cancel, go to My Tickets in your dashboard and select the ticket you wish to cancel.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What happens if my bus is delayed or cancelled?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          If a bus is delayed by more than 15 minutes, you will receive a notification via email and SMS (if enabled). For delays over 30 minutes, you may choose to reschedule at no extra cost. If a service is cancelled entirely, you will receive a full automatic refund to your original payment method within 3-5 business days.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you offer weekly or monthly passes?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes, SmartBus offers discounted weekly and monthly passes for regular commuters. Weekly passes provide unlimited rides on a selected route for 7 days, while monthly passes cover 30 days. Student and senior discounts are also available. Visit the Fares page or contact our support team to learn more about pass options and pricing.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I report a lost item on the bus?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          If you left something on a bus, contact us as soon as possible through the contact form above (select "Lost & Found" as the subject), call our hotline at 1-800-SMARTBUS, or visit the Lost & Found desk at Central Terminal. Please provide the route number, approximate date and time of travel, and a description of the item. We retain lost items for up to 30 days.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>&#128652; SmartBus</h4>
+        <p>Smart Transportation & Ticketing Integration platform. Making public transport accessible, efficient, and enjoyable for everyone.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="routes.html">Routes</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="fares.html">Fares</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <ul>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="user/dashboard.html">My Dashboard</a></li>
+          <li><a href="user/my-tickets.html">My Tickets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Help Center</a></li>
+          <li><a href="contact.html">FAQ</a></li>
+          <li><a href="contact.html">Report Issue</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 SmartBus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    function toggleFaq(button) {
+      var item = button.parentElement;
+      item.classList.toggle('open');
+    }
+
+    function handleContactForm(event) {
+      event.preventDefault();
+      var alertDiv = document.getElementById('contactAlert');
+      alertDiv.className = 'alert alert-success';
+      alertDiv.textContent = 'Thank you! Your message has been sent successfully. We will get back to you within 24 hours.';
+      alertDiv.style.display = 'block';
+      document.getElementById('contactForm').reset();
+      return false;
+    }
+  </script>
+
+</body>
+
+</html>

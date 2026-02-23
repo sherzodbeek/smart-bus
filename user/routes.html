@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routes &amp; Maps - SmartBus</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>&#128652; SmartBus</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <a href="dashboard.html"><span class="nav-icon">&#128202;</span> Dashboard</a>
+                    <a href="buy-ticket.html"><span class="nav-icon">&#127915;</span> Buy Ticket</a>
+                    <a href="my-tickets.html"><span class="nav-icon">&#128203;</span> My Tickets</a>
+                    <a href="routes.html" class="active"><span class="nav-icon">&#128739;</span> Routes &amp; Maps</a>
+                    <a href="profile.html"><span class="nav-icon">&#128100;</span> My Profile</a>
+                </div>
+                <div class="nav-section">
+                    <h4>Support</h4>
+                    <a href="../contact.html"><span class="nav-icon">&#128172;</span> Help Center</a>
+                    <a href="../login.html"><span class="nav-icon">&#128682;</span> Logout</a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <p>&copy; 2026 SmartBus</p>
+            </div>
+        </aside>
+
+        <div class="dashboard-content">
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+                    <h1 class="page-title">Routes &amp; Maps</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="user-menu">
+                        <div class="user-avatar">B</div>
+                        <span>Bekzod</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-main">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="userRouteSearch" class="form-control search-box" placeholder="Search routes by name or number...">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option value="all">All Routes</option>
+                                    <option value="express">Express</option>
+                                    <option value="local">Local</option>
+                                    <option value="night">Night</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-3" id="userRoutesGrid">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge badge-primary">Route 101</span>
+                            <span class="badge badge-success">Express</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Downtown Express</h3>
+                            <div class="ticket-route">
+                                <div class="route-name">Downtown Terminal</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-name">Airport Station</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Stops</span>
+                                    <span class="detail-value">8</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Frequency</span>
+                                    <span class="detail-value">Every 15 min</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">First Bus</span>
+                                    <span class="detail-value">05:30 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Last Bus</span>
+                                    <span class="detail-value">11:30 PM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Fare</span>
+                                    <span class="detail-value">$12.50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-sm">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge badge-primary">Route 202</span>
+                            <span class="badge badge-warning">Local</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>University Line</h3>
+                            <div class="ticket-route">
+                                <div class="route-name">Central Park</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-name">University Campus</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Stops</span>
+                                    <span class="detail-value">14</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Frequency</span>
+                                    <span class="detail-value">Every 10 min</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">First Bus</span>
+                                    <span class="detail-value">06:00 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Last Bus</span>
+                                    <span class="detail-value">10:00 PM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Fare</span>
+                                    <span class="detail-value">$8.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-sm">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge badge-primary">Route 303</span>
+                            <span class="badge badge-success">Express</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Tech Park Shuttle</h3>
+                            <div class="ticket-route">
+                                <div class="route-name">Riverside Mall</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-name">Tech Park</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Stops</span>
+                                    <span class="detail-value">6</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Frequency</span>
+                                    <span class="detail-value">Every 20 min</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">First Bus</span>
+                                    <span class="detail-value">07:00 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Last Bus</span>
+                                    <span class="detail-value">09:00 PM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Fare</span>
+                                    <span class="detail-value">$10.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-sm">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge badge-primary">Route 404</span>
+                            <span class="badge badge-warning">Local</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>City Loop</h3>
+                            <div class="ticket-route">
+                                <div class="route-name">Downtown Terminal</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-name">Central Park</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Stops</span>
+                                    <span class="detail-value">20</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Frequency</span>
+                                    <span class="detail-value">Every 8 min</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">First Bus</span>
+                                    <span class="detail-value">05:00 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Last Bus</span>
+                                    <span class="detail-value">12:00 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Fare</span>
+                                    <span class="detail-value">$5.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-sm">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge badge-primary">Route 505</span>
+                            <span class="badge badge-danger">Night</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Night Owl</h3>
+                            <div class="ticket-route">
+                                <div class="route-name">Airport Station</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-name">Downtown Terminal</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Stops</span>
+                                    <span class="detail-value">10</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Frequency</span>
+                                    <span class="detail-value">Every 30 min</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">First Bus</span>
+                                    <span class="detail-value">10:00 PM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Last Bus</span>
+                                    <span class="detail-value">04:00 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Fare</span>
+                                    <span class="detail-value">$15.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-sm">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge badge-primary">Route 606</span>
+                            <span class="badge badge-success">Express</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Savdo Markazi Ulanishi</h3>
+                            <div class="ticket-route">
+                                <div class="route-name">University Campus</div>
+                                <div class="route-arrow">&#8594;</div>
+                                <div class="route-name">Riverside Mall</div>
+                            </div>
+                            <div class="ticket-details">
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Stops</span>
+                                    <span class="detail-value">5</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Frequency</span>
+                                    <span class="detail-value">Every 12 min</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">First Bus</span>
+                                    <span class="detail-value">08:00 AM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Last Bus</span>
+                                    <span class="detail-value">10:30 PM</span>
+                                </div>
+                                <div class="ticket-detail-item">
+                                    <span class="detail-label">Fare</span>
+                                    <span class="detail-value">$7.50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

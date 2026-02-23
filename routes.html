@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bus Routes - SmartBus</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <meta name="description" content="Browse all SmartBus routes and find the best way to your destination">
+  <style>
+    .routes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .route-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .route-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    .route-card-header {
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .route-number {
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius);
+    }
+    .route-card-body {
+      padding: 1.25rem;
+    }
+    .route-card-body h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .route-stops {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .route-stop {
+      flex: 1;
+    }
+    .route-stop .stop-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+    .route-stop .stop-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .route-arrow-sm {
+      color: var(--primary);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .route-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .route-meta-item {
+      text-align: center;
+    }
+    .route-meta-item .meta-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+    .route-meta-item .meta-value {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .route-meta-item .meta-value.price {
+      color: var(--primary);
+    }
+    .filter-bar {
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    @media (max-width: 768px) {
+      .routes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <span class="brand-icon">&#128652;</span>
+      SmartBus
+    </a>
+    <button class="navbar-toggle" onclick="toggleNav()">&#9776;</button>
+    <ul class="navbar-nav" id="navbarNav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="routes.html" class="active">Routes</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html" class="btn btn-primary">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Routes Section -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Bus Routes</h2>
+      <p>Browse all available routes and plan your journey</p>
+    </div>
+
+    <!-- Search / Filter -->
+    <div class="filter-bar">
+      <div class="search-box" style="flex: 1; max-width: 100%;">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" class="form-control" id="routeSearch" placeholder="Search routes by name, number, or stop..." oninput="filterRoutes()">
+      </div>
+    </div>
+
+    <!-- Routes Grid -->
+    <div class="routes-grid" id="routesGrid">
+
+      <!-- Route 1 -->
+      <div class="route-card" data-search="101 downtown express central station financial district">
+        <div class="route-card-header">
+          <span class="route-number">101</span>
+          <span class="badge badge-success">Active</span>
+        </div>
+        <div class="route-card-body">
+          <h3>Downtown Express</h3>
+          <div class="route-stops">
+            <div class="route-stop">
+              <div class="stop-label">From</div>
+              <div class="stop-name">Central Station</div>
+            </div>
+            <span class="route-arrow-sm">&#8594;</span>
+            <div class="route-stop">
+              <div class="stop-label">To</div>
+              <div class="stop-name">Financial District</div>
+            </div>
+          </div>
+          <div class="route-meta">
+            <div class="route-meta-item">
+              <div class="meta-label">Frequency</div>
+              <div class="meta-value">Every 10 min</div>
+            </div>
+            <div class="route-meta-item">
+              <div class="meta-label">Fare</div>
+              <div class="meta-value price">$2.50</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Route 2 -->
+      <div class="route-card" data-search="205 university line yangi universitet university medical center">
+        <div class="route-card-header">
+          <span class="route-number">205</span>
+          <span class="badge badge-success">Active</span>
+        </div>
+        <div class="route-card-body">
+          <h3>University Line</h3>
+          <div class="route-stops">
+            <div class="route-stop">
+              <div class="stop-label">From</div>
+              <div class="stop-name">Westside Campus</div>
+            </div>
+            <span class="route-arrow-sm">&#8594;</span>
+            <div class="route-stop">
+              <div class="stop-label">To</div>
+              <div class="stop-name">Grand Terminal</div>
+            </div>
+          </div>
+          <div class="route-meta">
+            <div class="route-meta-item">
+              <div class="meta-label">Frequency</div>
+              <div class="meta-value">Every 12 min</div>
+            </div>
+            <div class="route-meta-item">
+              <div class="meta-label">Fare</div>
+              <div class="meta-value price">$1.75</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Route 3 -->
+      <div class="route-card" data-search="312 airport shuttle grand terminal metro airport">
+        <div class="route-card-header">
+          <span class="route-number">312</span>
+          <span class="badge badge-success">Active</span>
+        </div>
+        <div class="route-card-body">
+          <h3>Airport Shuttle</h3>
+          <div class="route-stops">
+            <div class="route-stop">
+              <div class="stop-label">From</div>
+              <div class="stop-name">Grand Terminal</div>
+            </div>
+            <span class="route-arrow-sm">&#8594;</span>
+            <div class="route-stop">
+              <div class="stop-label">To</div>
+              <div class="stop-name">Metro Airport</div>
+            </div>
+          </div>
+          <div class="route-meta">
+            <div class="route-meta-item">
+              <div class="meta-label">Frequency</div>
+              <div class="meta-value">Every 20 min</div>
+            </div>
+            <div class="route-meta-item">
+              <div class="meta-label">Fare</div>
+              <div class="meta-value price">$5.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Route 4 -->
+      <div class="route-card" data-search="118 harbor loop marina bay port industrial zone">
+        <div class="route-card-header">
+          <span class="route-number">118</span>
+          <span class="badge badge-success">Active</span>
+        </div>
+        <div class="route-card-body">
+          <h3>Harbor Loop</h3>
+          <div class="route-stops">
+            <div class="route-stop">
+              <div class="stop-label">From</div>
+              <div class="stop-name">Marina Bay</div>
+            </div>
+            <span class="route-arrow-sm">&#8594;</span>
+            <div class="route-stop">
+              <div class="stop-label">To</div>
+              <div class="stop-name">Port Industrial Zone</div>
+            </div>
+          </div>
+          <div class="route-meta">
+            <div class="route-meta-item">
+              <div class="meta-label">Frequency</div>
+              <div class="meta-value">Every 15 min</div>
+            </div>
+            <div class="route-meta-item">
+              <div class="meta-label">Fare</div>
+              <div class="meta-value price">$2.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Route 5 -->
+      <div class="route-card" data-search="407 suburban connector northgate mall riverside park">
+        <div class="route-card-header">
+          <span class="route-number">407</span>
+          <span class="badge badge-warning">Limited</span>
+        </div>
+        <div class="route-card-body">
+          <h3>Suburban Connector</h3>
+          <div class="route-stops">
+            <div class="route-stop">
+              <div class="stop-label">From</div>
+              <div class="stop-name">Compass Mall</div>
+            </div>
+            <span class="route-arrow-sm">&#8594;</span>
+            <div class="route-stop">
+              <div class="stop-label">To</div>
+              <div class="stop-name">Riverside Park</div>
+            </div>
+          </div>
+          <div class="route-meta">
+            <div class="route-meta-item">
+              <div class="meta-label">Frequency</div>
+              <div class="meta-value">Every 25 min</div>
+            </div>
+            <div class="route-meta-item">
+              <div class="meta-label">Fare</div>
+              <div class="meta-value price">$3.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Route 6 -->
+      <div class="route-card" data-search="550 east-west crosstown eastdale square westfield plaza">
+        <div class="route-card-header">
+          <span class="route-number">550</span>
+          <span class="badge badge-success">Active</span>
+        </div>
+        <div class="route-card-body">
+          <h3>East-West Crosstown</h3>
+          <div class="route-stops">
+            <div class="route-stop">
+              <div class="stop-label">From</div>
+              <div class="stop-name">Eastdale Square</div>
+            </div>
+            <span class="route-arrow-sm">&#8594;</span>
+            <div class="route-stop">
+              <div class="stop-label">To</div>
+              <div class="stop-name">Westfield Plaza</div>
+            </div>
+          </div>
+          <div class="route-meta">
+            <div class="route-meta-item">
+              <div class="meta-label">Frequency</div>
+              <div class="meta-value">Every 8 min</div>
+            </div>
+            <div class="route-meta-item">
+              <div class="meta-label">Fare</div>
+              <div class="meta-value price">$2.50</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Route 7 -->
+      <div class="route-card" data-search="623 hillside route summit heights valley town center">
+        <div class="route-card-header">
+          <span class="route-number">623</span>
+          <span class="badge badge-success">Active</span>
+        </div>
+        <div class="route-card-body">
+          <h3>Hillside Route</h3>
+          <div class="route-stops">
+            <div class="route-stop">
+              <div class="stop-label">From</div>
+              <div class="stop-name">Summit Heights</div>
+            </div>
+            <span class="route-arrow-sm">&#8594;</span>
+            <div class="route-stop">
+              <div class="stop-label">To</div>
+              <div class="stop-name">Valley Town Center</div>
+            </div>
+          </div>
+          <div class="route-meta">
+            <div class="route-meta-item">
+              <div class="meta-label">Frequency</div>
+              <div class="meta-value">Every 18 min</div>
+            </div>
+            <div class="route-meta-item">
+              <div class="meta-label">Fare</div>
+              <div class="meta-value price">$2.75</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Route 8 -->
+      <div class="route-card" data-search="780 night owl service central station south bay terminal">
+        <div class="route-card-header">
+          <span class="route-number">780</span>
+          <span class="badge badge-primary">Night</span>
+        </div>
+        <div class="route-card-body">
+          <h3>Night Owl Service</h3>
+          <div class="route-stops">
+            <div class="route-stop">
+              <div class="stop-label">From</div>
+              <div class="stop-name">Central Station</div>
+            </div>
+            <span class="route-arrow-sm">&#8594;</span>
+            <div class="route-stop">
+              <div class="stop-label">To</div>
+              <div class="stop-name">South Bay Terminal</div>
+            </div>
+          </div>
+          <div class="route-meta">
+            <div class="route-meta-item">
+              <div class="meta-label">Frequency</div>
+              <div class="meta-value">Every 30 min</div>
+            </div>
+            <div class="route-meta-item">
+              <div class="meta-label">Fare</div>
+              <div class="meta-value price">$3.50</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>&#128652; SmartBus</h4>
+        <p>Smart Transportation & Ticketing Integration platform. Making public transport accessible, efficient, and enjoyable for everyone.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="routes.html">Routes</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="fares.html">Fares</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <ul>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="user/dashboard.html">My Dashboard</a></li>
+          <li><a href="user/my-tickets.html">My Tickets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Help Center</a></li>
+          <li><a href="contact.html">FAQ</a></li>
+          <li><a href="contact.html">Report Issue</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 SmartBus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    function filterRoutes() {
+      var query = document.getElementById('routeSearch').value.toLowerCase();
+      var cards = document.querySelectorAll('.route-card');
+      cards.forEach(function(card) {
+        var searchText = card.getAttribute('data-search');
+        if (searchText.indexOf(query) !== -1) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>

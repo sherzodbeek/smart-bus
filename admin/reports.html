@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reports &amp; Analytics - SmartBus Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <meta name="description" content="SmartBus Admin - Reports & Analytics">
+</head>
+
+<body>
+
+  <div class="dashboard-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span>&#128652; SmartBus Admin</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <a href="dashboard.html"><span class="nav-icon">&#128202;</span> Dashboard</a>
+          <a href="routes.html"><span class="nav-icon">&#128739;</span> Routes</a>
+          <a href="buses.html"><span class="nav-icon">&#128652;</span> Fleet</a>
+          <a href="users.html"><span class="nav-icon">&#128101;</span> Users</a>
+          <a href="tickets.html"><span class="nav-icon">&#127915;</span> Tickets</a>
+          <a href="reports.html" class="active"><span class="nav-icon">&#128200;</span> Reports</a>
+        </div>
+        <div class="nav-section">
+          <h4>Account</h4>
+          <a href="settings.html"><span class="nav-icon">&#9881;</span> Settings</a>
+          <a href="../login.html"><span class="nav-icon">&#128682;</span> Logout</a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <p>&copy; 2026 SmartBus</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-content">
+
+      <!-- Topbar -->
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+          <h1 class="page-title">Reports &amp; Analytics</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-menu">
+            <span class="user-avatar">A</span>
+            <span>Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Area -->
+      <main class="dashboard-main">
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">&#128176;</div>
+            <div class="stat-info">
+              <h3>Total Revenue</h3>
+              <p class="stat-value">$145,200</p>
+              <p class="stat-change">+14.3% from last month</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">&#127915;</div>
+            <div class="stat-info">
+              <h3>Tickets Sold</h3>
+              <p class="stat-value">28,450</p>
+              <p class="stat-change">+9.7% from last month</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon yellow">&#128101;</div>
+            <div class="stat-info">
+              <h3>Avg Daily Riders</h3>
+              <p class="stat-value">15,200</p>
+              <p class="stat-change">+6.2% from last month</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon red">&#128739;</div>
+            <div class="stat-info">
+              <h3>Routes Coverage</h3>
+              <p class="stat-value">85</p>
+              <p class="stat-change">+3 new routes this month</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <h3>Revenue Overview</h3>
+            </div>
+            <div class="card-body">
+              <p>Revenue chart placeholder</p>
+              <p style="color: #888; margin-top: 1rem;">Monthly revenue data for the past 12 months. Integrate a charting library such as Chart.js to render this visualization.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Ridership Trends</h3>
+            </div>
+            <div class="card-body">
+              <p>Ridership trends chart placeholder</p>
+              <p style="color: #888; margin-top: 1rem;">Daily ridership data showing peak hours and seasonal trends. Integrate a charting library to render this visualization.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Performing Routes -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Top Performing Routes</h3>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Route</th>
+                    <th>Daily Avg Riders</th>
+                    <th>Monthly Revenue</th>
+                    <th>Occupancy Rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Route 15 - Downtown Express</td>
+                    <td>3,450</td>
+                    <td>$28,600</td>
+                    <td><span class="badge badge-success">92%</span></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Route 7 - University Line</td>
+                    <td>2,980</td>
+                    <td>$22,400</td>
+                    <td><span class="badge badge-success">87%</span></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Route 22 - Airport Shuttle</td>
+                    <td>2,150</td>
+                    <td>$19,800</td>
+                    <td><span class="badge badge-warning">78%</span></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Route 3 - Riverside Loop</td>
+                    <td>1,840</td>
+                    <td>$15,200</td>
+                    <td><span class="badge badge-warning">74%</span></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Route 9 - Industrial Park</td>
+                    <td>1,620</td>
+                    <td>$12,900</td>
+                    <td><span class="badge badge-warning">71%</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/app.js"></script>
+
+</body>
+
+</html>

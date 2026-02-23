@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - SmartBus Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span>&#128653;</span> SmartBus Admin
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <a href="dashboard.html" class="active"><span class="nav-icon">&#128202;</span> Dashboard</a>
+          <a href="routes.html"><span class="nav-icon">&#128739;</span> Routes</a>
+          <a href="buses.html"><span class="nav-icon">&#128652;</span> Fleet/Buses</a>
+          <a href="users.html"><span class="nav-icon">&#128101;</span> Users</a>
+          <a href="tickets.html"><span class="nav-icon">&#127915;</span> Tickets</a>
+          <a href="reports.html"><span class="nav-icon">&#128200;</span> Reports</a>
+        </div>
+        <div class="nav-section">
+          <label>Account</label>
+          <a href="settings.html"><span class="nav-icon">&#9881;</span> Settings</a>
+          <a href="../login.html"><span class="nav-icon">&#128682;</span> Logout</a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        &copy; 2026 SmartBus
+      </div>
+    </aside>
+
+    <div class="dashboard-content">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+          <h1 class="page-title">Dashboard</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-menu">
+            <span class="user-avatar">A</span>
+            <span>Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-main">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">&#128739;</div>
+            <div class="stat-info">
+              <span class="stat-value">85</span>
+              <span>Total Routes</span>
+              <span class="stat-change">+3 this month</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">&#128652;</div>
+            <div class="stat-info">
+              <span class="stat-value">247</span>
+              <span>Active Buses</span>
+              <span class="stat-change">+12 this week</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon yellow">&#127915;</div>
+            <div class="stat-info">
+              <span class="stat-value">1,284</span>
+              <span>Today's Tickets</span>
+              <span class="stat-change">+8% vs yesterday</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon red">&#128176;</div>
+            <div class="stat-info">
+              <span class="stat-value">$12,450</span>
+              <span>Revenue</span>
+              <span class="stat-change">+15% this month</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Recent Tickets</h2>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Passenger</th>
+                    <th>Route</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#TK-1001</td>
+                    <td>Azizbek Karimov</td>
+                    <td>Route 12 - Downtown Express</td>
+                    <td>2026-02-18</td>
+                    <td>$4.50</td>
+                    <td><span class="badge badge-success">Confirmed</span></td>
+                  </tr>
+                  <tr>
+                    <td>#TK-1002</td>
+                    <td>Nodira Raximova</td>
+                    <td>Route 7 - Airport Shuttle</td>
+                    <td>2026-02-18</td>
+                    <td>$8.00</td>
+                    <td><span class="badge badge-success">Confirmed</span></td>
+                  </tr>
+                  <tr>
+                    <td>#TK-1003</td>
+                    <td>Sardor Yuldashev</td>
+                    <td>Route 3 - University Line</td>
+                    <td>2026-02-18</td>
+                    <td>$2.75</td>
+                    <td><span class="badge badge-warning">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>#TK-1004</td>
+                    <td>Dilnoza Islomova</td>
+                    <td>Route 15 - Suburban Connect</td>
+                    <td>2026-02-17</td>
+                    <td>$5.25</td>
+                    <td><span class="badge badge-success">Confirmed</span></td>
+                  </tr>
+                  <tr>
+                    <td>#TK-1005</td>
+                    <td>Javohir Qodirov</td>
+                    <td>Route 9 - Harbor Loop</td>
+                    <td>2026-02-17</td>
+                    <td>$3.50</td>
+                    <td><span class="badge badge-danger">Cancelled</span></td>
+                  </tr>
+                  <tr>
+                    <td>#TK-1006</td>
+                    <td>Malika Toirova</td>
+                    <td>Route 21 - Northside Rapid</td>
+                    <td>2026-02-17</td>
+                    <td>$4.00</td>
+                    <td><span class="badge badge-success">Confirmed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="tickets.html">View all tickets</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>System Alerts</h2>
+          </div>
+          <div class="card-body">
+            <div class="alert-item">
+              <span class="badge badge-danger">Critical</span>
+              <strong>Bus #B-042 breakdown</strong> - Route 7 service disrupted. Replacement dispatched.
+            </div>
+            <div class="alert-item">
+              <span class="badge badge-warning">Warning</span>
+              <strong>Route 15 delay</strong> - Construction on Main St causing 15-min delays.
+            </div>
+            <div class="alert-item">
+              <span class="badge badge-primary">Info</span>
+              <strong>Scheduled maintenance</strong> - 5 buses due for maintenance this weekend.
+            </div>
+            <div class="alert-item">
+              <span class="badge badge-success">Resolved</span>
+              <strong>Route 3 restored</strong> - Normal service resumed after earlier signal fault.
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

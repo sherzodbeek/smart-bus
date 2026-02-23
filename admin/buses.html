@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fleet - SmartBus Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span>&#128653;</span> SmartBus Admin
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <a href="dashboard.html"><span class="nav-icon">&#128202;</span> Dashboard</a>
+          <a href="routes.html"><span class="nav-icon">&#128739;</span> Routes</a>
+          <a href="buses.html" class="active"><span class="nav-icon">&#128652;</span> Fleet/Buses</a>
+          <a href="users.html"><span class="nav-icon">&#128101;</span> Users</a>
+          <a href="tickets.html"><span class="nav-icon">&#127915;</span> Tickets</a>
+          <a href="reports.html"><span class="nav-icon">&#128200;</span> Reports</a>
+        </div>
+        <div class="nav-section">
+          <label>Account</label>
+          <a href="settings.html"><span class="nav-icon">&#9881;</span> Settings</a>
+          <a href="../login.html"><span class="nav-icon">&#128682;</span> Logout</a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        &copy; 2026 SmartBus
+      </div>
+    </aside>
+
+    <div class="dashboard-content">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+          <h1 class="page-title">Fleet Management</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-menu">
+            <span class="user-avatar">A</span>
+            <span>Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-main">
+        <div class="card">
+          <div class="card-header">
+            <h2>Fleet Management</h2>
+            <button class="btn btn-primary" onclick="document.getElementById('addBusModal').style.display='flex'">Add Bus</button>
+          </div>
+          <div class="card-body">
+            <div class="search-box">
+              <input type="text" id="busSearch" class="form-control" placeholder="Search buses...">
+            </div>
+            <div class="table-responsive">
+              <table id="busesTable">
+                <thead>
+                  <tr>
+                    <th>Bus ID</th>
+                    <th>Plate Number</th>
+                    <th>Model</th>
+                    <th>Capacity</th>
+                    <th>Assigned Route</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>B-001</td>
+                    <td>XA-1234-BC</td>
+                    <td>Mercedes Citaro</td>
+                    <td>52</td>
+                    <td>R-001 Downtown Express</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>B-007</td>
+                    <td>XB-5678-DE</td>
+                    <td>Volvo 7900 Electric</td>
+                    <td>45</td>
+                    <td>R-003 University Line</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>B-012</td>
+                    <td>XC-9012-FG</td>
+                    <td>BYD K9</td>
+                    <td>40</td>
+                    <td>R-007 Airport Shuttle</td>
+                    <td><span class="badge badge-warning">Maintenance</span></td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>B-019</td>
+                    <td>XD-3456-HI</td>
+                    <td>MAN Lion's City</td>
+                    <td>48</td>
+                    <td>R-012 Midtown Circulator</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>B-025</td>
+                    <td>XE-7890-JK</td>
+                    <td>Solaris Urbino 12</td>
+                    <td>50</td>
+                    <td>R-015 Suburban Connect</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>B-031</td>
+                    <td>XF-2345-LM</td>
+                    <td>Scania Citywide</td>
+                    <td>44</td>
+                    <td>R-021 Northside Rapid</td>
+                    <td><span class="badge badge-danger">Inactive</span></td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>B-038</td>
+                    <td>XG-6789-NO</td>
+                    <td>Mercedes Citaro</td>
+                    <td>52</td>
+                    <td>R-009 Harbor Loop</td>
+                    <td><span class="badge badge-warning">Maintenance</span></td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>B-042</td>
+                    <td>XH-0123-PQ</td>
+                    <td>Volvo 7900 Electric</td>
+                    <td>45</td>
+                    <td>R-028 Industrial Park Express</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Edit</button>
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="pagination">
+              <a href="#">&laquo;</a>
+              <a href="#" class="active">1</a>
+              <a href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">4</a>
+              <a href="#">&raquo;</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="addBusModal" style="display:none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Add New Bus</h2>
+        <button class="modal-close" onclick="document.getElementById('addBusModal').style.display='none'">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-row grid-2">
+            <div class="form-group">
+              <label for="busId">Bus ID</label>
+              <input type="text" id="busId" class="form-control" placeholder="e.g. B-050">
+            </div>
+            <div class="form-group">
+              <label for="plateNumber">Plate Number</label>
+              <input type="text" id="plateNumber" class="form-control" placeholder="e.g. XA-0000-AA">
+            </div>
+          </div>
+          <div class="form-row grid-2">
+            <div class="form-group">
+              <label for="busModel">Model</label>
+              <input type="text" id="busModel" class="form-control" placeholder="e.g. Mercedes Citaro">
+            </div>
+            <div class="form-group">
+              <label for="busCapacity">Capacity</label>
+              <input type="number" id="busCapacity" class="form-control" placeholder="e.g. 50">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="assignedRoute">Assigned Route</label>
+            <select id="assignedRoute" class="form-control">
+              <option value="">-- Select Route --</option>
+              <option value="R-001">R-001 Downtown Express</option>
+              <option value="R-003">R-003 University Line</option>
+              <option value="R-007">R-007 Airport Shuttle</option>
+              <option value="R-009">R-009 Harbor Loop</option>
+              <option value="R-012">R-012 Midtown Circulator</option>
+              <option value="R-015">R-015 Suburban Connect</option>
+              <option value="R-021">R-021 Northside Rapid</option>
+              <option value="R-028">R-028 Industrial Park Express</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="busStatus">Status</label>
+            <select id="busStatus" class="form-control">
+              <option value="active">Active</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="document.getElementById('addBusModal').style.display='none'">Cancel</button>
+        <button class="btn btn-primary">Save Bus</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>
